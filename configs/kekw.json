@@ -1,42 +1,34 @@
 [
   {
-    "id": "fake_win",
-    "name": "Фальшивая победа",
-    "description": "Ты думал, что выиграл, но нет!",
-    "image": "https://example.com/fake.png",
-    "color": "#ff00ff",
+    "id": "loh",
+    "name": "Ты лох",
+    "description": "Стример лох гага",
+    "image": "https://media.tenor.com/fwWYoaFuSicAAAAi/loh-%D0%BB%D0%BE%D1%85.gif",
+    "color": "#000000",
     "weight": 5
   },
   {
-    "id": "dance",
-    "name": "Танцевать",
-    "description": "Встань и станцуй 30 секунд!",
-    "image": "https://example.com/dance.png",
-    "color": "#ff8800",
+    "id": "beuty",
+    "name": "Ты красавчик",
+    "description": "Стример красавчик",
+    "image": "https://media.tenor.com/WEVqbc2RRHMAAAAi/and-then-thumbs-up.gif",
+    "color": "#ffffff",
+    "weight": 5
+  },
+  {
+    "id": "yaloh",
+    "name": "Я лох",
+    "description": "ГАГА ДУМАЛ СМЕШНО? ТЕПЕРЬ ТЫ САМ ЛОХ",
+    "image": "https://media.tenor.com/fwWYoaFuSicAAAAi/loh-%D0%BB%D0%BE%D1%85.gif",
+    "color": "#000000",
     "weight": 7
   },
   {
-    "id": "sing",
-    "name": "Спеть песню",
-    "description": "Спой куплет любой песни",
-    "image": "https://example.com/sing.png",
-    "color": "#00aaff",
-    "weight": 6
-  },
-  {
-    "id": "pet",
-    "name": "Погладить кота",
-    "description": "Погладь своего питомца (если есть)",
-    "image": "https://example.com/pet.png",
-    "color": "#66cc66",
-    "weight": 8
-  },
-  {
-    "id": "water",
-    "name": "Попить воды",
-    "description": "Попить самой вкусной воды из под крана",
-    "image": "https://example.com/pet.png",
-    "color": "#66cc11",
-    "weight": 9
+    "id": "yabeuty",
+    "name": "Я красавчик",
+    "description": "Оумагад чё за лев этот тигр",
+    "image": "https://media.tenor.com/WEVqbc2RRHMAAAAi/and-then-thumbs-up.gif",
+    "color": "#ffffff",
+    "weight": 7
   }
 ]

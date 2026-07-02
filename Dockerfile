@@ -29,7 +29,7 @@ COPY --from=builder /app/static ./static
 COPY --from=builder /app/configs ./configs
 
 # Пробрасываем порт
-EXPOSE 8080
+EXPOSE 3001
 
 # Запускаем сервер
 CMD ["./roulette"]
