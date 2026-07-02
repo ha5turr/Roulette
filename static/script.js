@@ -56,16 +56,23 @@ function drawWheel(events) {
         ctx.stroke();
 
         const midAngle = startAngle + angleStep / 2;
-        const textX = 250 + 150 * Math.cos(midAngle);
-        const textY = 250 + 150 * Math.sin(midAngle);
+        // Текст размещаем на радиусе 170 (чуть ближе к центру, чтобы не вылезал)
+        const textRadius = 170;
+        const textX = 250 + textRadius * Math.cos(midAngle);
+        const textY = 250 + textRadius * Math.sin(midAngle);
         ctx.save();
         ctx.translate(textX, textY);
-        ctx.rotate(midAngle + Math.PI / 2);
+        // Поворачиваем так, чтобы текст был вдоль касательной (по дуге)
+        // Для читаемости: если сектор в нижней половине, разворачиваем текст
+        ctx.rotate(midAngle);
         ctx.fillStyle = '#fff';
         ctx.font = 'bold 14px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(events[i].name, 0, 0);
+        // Ограничим длину текста, чтобы не вылезал
+        let label = events[i].name;
+        if (label.length > 12) label = label.slice(0, 10) + '…';
+        ctx.fillText(label, 0, 0);
         ctx.restore();
     }
 }
@@ -102,10 +109,8 @@ function spinToEvent(targetEvent) {
     const n = events.length;
     const angleStep = (2 * Math.PI) / n;
     const targetAngle = idx * angleStep + angleStep / 2;
-    // Увеличиваем количество оборотов: минимум 8, максимум 12
     const extraSpins = 8 + Math.floor(Math.random() * 5);
     let finalAngle = (3 * Math.PI / 2) - targetAngle + 2 * Math.PI * extraSpins;
-    // Гарантируем, что разница будет минимум 6 полных оборотов для зрелищности
     const minRotation = 6 * 2 * Math.PI;
     while (finalAngle <= currentAngle + minRotation) {
         finalAngle += 2 * Math.PI;
@@ -158,7 +163,7 @@ function spinToEvent(targetEvent) {
 }
 
 function connectWebSocket() {
-    const ws = new WebSocket('ws://localhost:8080/ws');
+    const ws = new WebSocket('ws://localhost:3001/ws');
     ws.onopen = () => console.log('WebSocket connected');
     ws.onmessage = (msg) => {
         const data = JSON.parse(msg.data);

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "fake_win",
+    "name": "Безумие",
+    "description": "Мастер периодически управляет персонажем",
+    "image": "https://example.com/fake.png",
+    "color": "#ff00ff",
+    "weight": 5
+  },
+  {
+    "id": "unlucky",
+    "name": "Невезение",
+    "description": "Персонаж получает помеху на каждый второй бросок",
+    "image": "https://example.com/dance.png",
+    "color": "#ff8800",
+    "weight": 5
+  },
+  {
+    "id": "fatigue",
+    "name": "Усталость",
+    "description": "Персонаж не получает восстановления на кострах",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+    "id": "fear",
+    "name": "Страх",
+    "description": "Состояние Испуган от одного из врагов",
+    "image": "https://example.com/sing.png",
+    "color": "#00aaff",
+    "weight": 5
+  },
+  {
+    "id": "hysteria",
+    "name": "Истерия",
+    "description": "Критические провалы заставляют персонажа неистово сметься, прожать G пока он не преуспеет в спасброске Воли",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc66",
+    "weight": 5
+  },
+  {
+    "id": "forgetfulness",
+    "name": "Забывчивость",
+    "description": "Персонаж получает помехи на проверку Знаний и Воли",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+    "id": "weak",
+    "name": "Слабый",
+    "description": "Персонаж получает -2 к Силе",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+    "id": "silly",
+    "name": "Недалёкий",
+    "description": "Персонаж теряет 2 Знания",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+    "id": "clumsy",
+    "name": "Неуклюжий",
+    "description": "Персонаж теряет 2 Сноровки",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "slow",
+    "name": "Медлительный",
+    "description": "Персонаж теряет 2 Ловкости",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "confusion",
+    "name": "Растерянность",
+    "description": "Персонаж теряет 2 Находчивости",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "rag",
+    "name": "Безвольность",
+    "description": "Персонаж теряет 2 Воли",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "frail",
+    "name": "Хилый",
+    "description": "Персонаж теряет 2 Стойкости",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "evilEye",
+    "name": "Сглаз",
+    "description": "Критический успех (20 на d20) всегда перебрасывается",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "water",
+    "name": "Картилогенофобия",
+    "description": "Не может сражаться со скелетами до отмены действия эффекта",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "water",
+    "name": "Демонофобия",
+    "description": "Не может сражаться с демонами до отмены действия эффекта",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  },
+  {
+    "id": "water",
+    "name": "Бленнофобией",
+    "description": "Не может сражаться с слизняками до отмены действия эффекта",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
+  }
+]

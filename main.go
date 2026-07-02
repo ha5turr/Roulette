@@ -21,6 +21,6 @@ func main() {
 	http.HandleFunc("/api/roulette/", rouletteHandler(roulettes))      // события по имени
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 
-	log.Println("Server started on :3000")
-	log.Fatal(http.ListenAndServe(":3000", nil))
+	log.Println("Server started on :3001")
+	log.Fatal(http.ListenAndServe(":3001", nil))
 }
