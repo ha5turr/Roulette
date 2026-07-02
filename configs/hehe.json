@@ -1,0 +1,18 @@
+[
+  {
+    "id": "speed_boost",
+    "name": "ДакиДак(минута)",
+    "description": "Скорость передвижения +50%",
+    "image": "https://freepngimg.com/thumb/speed/8-2-speed-png-image.png",
+    "color": "#00ff00",
+    "weight": 10
+  },
+  {
+    "id": "health_regen",
+    "name": "Раскалённое оружие",
+    "description": "Восстановление 5 HP/сек",
+    "image": "https://freepngimg.com/thumb/speed/8-2-speed-png-image.png",
+    "color": "#ffaa00",
+    "weight": 8
+  }
+]

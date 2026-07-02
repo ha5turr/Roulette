@@ -1,0 +1,14 @@
+roulette/
+├── main.go               # точка входа, роутинг, WebSocket hub
+├── config.go             # загрузка/парсинг конфигов рулеток
+├── handlers.go           # HTTP-обработчики (spin, static)
+├── websocket.go          # WebSocket-клиенты и broadcast
+├── configs/              # папка с JSON-файлами рулеток
+│   ├── buffs.json
+│   ├── debuffs.json
+│   └── curses.json
+├── static/               # статика оверлея
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+└── go.mod

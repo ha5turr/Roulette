@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  roulette:
+    build: .
+    container_name: twitch-roulette
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      # Монтируем папки, чтобы можно было менять конфиги и статику без пересборки
+      - ./configs:/app/configs
+      - ./static:/app/static
+      # (Опционально) можно смонтировать логи, если добавишь запись логов в файл
+      # - ./logs:/app/logs
+    environment:
+      - TZ=Europe/Moscow   # задай свой часовой пояс

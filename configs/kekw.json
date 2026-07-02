@@ -1,0 +1,34 @@
+[
+  {
+    "id": "fake_win",
+    "name": "Фальшивая победа",
+    "description": "Ты думал, что выиграл, но нет!",
+    "image": "https://example.com/fake.png",
+    "color": "#ff00ff",
+    "weight": 5
+  },
+  {
+    "id": "dance",
+    "name": "Танцевать",
+    "description": "Встань и станцуй 30 секунд!",
+    "image": "https://example.com/dance.png",
+    "color": "#ff8800",
+    "weight": 7
+  },
+  {
+    "id": "sing",
+    "name": "Спеть песню",
+    "description": "Спой куплет любой песни",
+    "image": "https://example.com/sing.png",
+    "color": "#00aaff",
+    "weight": 6
+  },
+  {
+    "id": "pet",
+    "name": "Погладить кота",
+    "description": "Погладь своего питомца (если есть)",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc66",
+    "weight": 8
+  }
+]
