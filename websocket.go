@@ -47,12 +47,13 @@ func (h *Hub) Run() {
 	}
 }
 
-// Broadcast отправляет событие всем клиентам
-func (h *Hub) Broadcast(event Event, rouletteName string) {
+// Broadcast – теперь принимает событие, имя рулетки и все её события
+func (h *Hub) Broadcast(event Event, rouletteName string, allEvents []Event) {
 	payload := map[string]interface{}{
-		"action":   "spin",
-		"roulette": rouletteName,
-		"event":    event,
+		"action":    "spin",
+		"roulette":  rouletteName,
+		"event":     event,
+		"allEvents": allEvents,
 	}
 	data, _ := json.Marshal(payload)
 	h.broadcast <- data
@@ -69,7 +70,6 @@ func wsHandler(hub *Hub) http.HandlerFunc {
 		defer func() {
 			hub.unregister <- conn
 		}()
-		// Ждём закрытия (read loop)
 		for {
 			_, _, err := conn.ReadMessage()
 			if err != nil {

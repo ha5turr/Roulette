@@ -30,5 +30,13 @@
     "image": "https://example.com/pet.png",
     "color": "#66cc66",
     "weight": 8
+  },
+  {
+    "id": "water",
+    "name": "Попить воды",
+    "description": "Попить самой вкусной воды из под крана",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 9
   }
 ]

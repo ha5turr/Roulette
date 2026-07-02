@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"math/rand"
 	"net/http"
-	"strings"
 	"time"
 )
 
@@ -12,16 +11,42 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-// SpinRequest от Streamer.bot
 type SpinRequest struct {
-	Roulette string `json:"roulette"` // имя рулетки: buffs, debuffs, etc.
+	Roulette string `json:"roulette"`
 }
 
-// SpinResponse – выбранное событие
 type SpinResponse struct {
 	Event Event `json:"event"`
 }
 
+// GET /api/roulettes – возвращает список имён рулеток
+func roulettesListHandler(roulettes map[string]*Roulette) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		names := make([]string, 0, len(roulettes))
+		for name := range roulettes {
+			names = append(names, name)
+		}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(names)
+	}
+}
+
+// GET /api/roulette/{name} – возвращает события конкретной рулетки
+func rouletteHandler(roulettes map[string]*Roulette) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Извлекаем имя из URL
+		name := r.URL.Path[len("/api/roulette/"):]
+		roulette, ok := roulettes[name]
+		if !ok {
+			http.Error(w, "Roulette not found", http.StatusNotFound)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(roulette.Events)
+	}
+}
+
+// POST /api/spin – запуск рулетки (без изменений)
 func spinHandler(roulettes map[string]*Roulette, hub *Hub) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
@@ -46,7 +71,6 @@ func spinHandler(roulettes map[string]*Roulette, hub *Hub) http.HandlerFunc {
 			return
 		}
 
-		// Выбор с учётом весов (weighted random)
 		totalWeight := 0
 		for _, e := range roulette.Events {
 			totalWeight += e.Weight
@@ -61,41 +85,10 @@ func spinHandler(roulettes map[string]*Roulette, hub *Hub) http.HandlerFunc {
 			}
 		}
 
-		// Отправляем результат оверлеям через WebSocket
-		hub.Broadcast(selected, roulette.Name)
+		hub.Broadcast(selected, req.Roulette, roulette.Events)
 
-		// Возвращаем результат как подтверждение
 		resp := SpinResponse{Event: selected}
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(resp)
-	}
-}
-
-func roulettesHandler(roulettes map[string]*Roulette) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		names := make([]string, 0, len(roulettes))
-		for name := range roulettes {
-			names = append(names, name)
-		}
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(names)
-	}
-}
-
-func rouletteHandler(roulettes map[string]*Roulette) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		// Извлекаем имя из URL: /api/roulette/buffs
-		path := strings.TrimPrefix(r.URL.Path, "/api/roulette/")
-		if path == "" {
-			http.Error(w, "Missing roulette name", http.StatusBadRequest)
-			return
-		}
-		roulette, ok := roulettes[path]
-		if !ok {
-			http.Error(w, "Roulette not found", http.StatusNotFound)
-			return
-		}
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(roulette.Events)
 	}
 }

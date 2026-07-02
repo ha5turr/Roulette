@@ -6,12 +6,11 @@ const resultDesc = document.getElementById('result-desc');
 const resultImage = document.getElementById('result-image');
 const rouletteSelect = document.getElementById('roulette-select');
 
-let currentRoulette = null; // имя текущей рулетки
+let currentRoulette = null;
 let events = [];
 let currentAngle = 0;
 let spinning = false;
 
-// Загружаем список рулеток
 async function loadRoulettes() {
     const response = await fetch('/api/roulettes');
     const names = await response.json();
@@ -28,18 +27,16 @@ async function loadRoulettes() {
     }
 }
 
-// Загружаем события для выбранной рулетки
 async function loadRouletteEvents(name) {
     const response = await fetch(`/api/roulette/${name}`);
     const data = await response.json();
-    events = data; // массив событий
+    events = data;
     currentRoulette = name;
+    currentAngle = 0;
     drawWheel(events);
-    // Скрываем результат при смене рулетки
     resultOverlay.style.display = 'none';
 }
 
-// Рисуем колесо
 function drawWheel(events) {
     const n = events.length;
     if (n === 0) return;
@@ -73,13 +70,30 @@ function drawWheel(events) {
     }
 }
 
-// Анимация вращения
+function getSectorAtTop() {
+    const topAngle = 3 * Math.PI / 2;
+    let angle = currentAngle % (2 * Math.PI);
+    if (angle < 0) angle += 2 * Math.PI;
+    let sectorAngle = (topAngle - angle + 2 * Math.PI) % (2 * Math.PI);
+    const n = events.length;
+    const angleStep = 2 * Math.PI / n;
+    for (let i = 0; i < n; i++) {
+        const start = i * angleStep;
+        const end = (i + 1) * angleStep;
+        if (sectorAngle >= start && sectorAngle < end) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 function spinToEvent(targetEvent) {
     if (spinning) return;
     spinning = true;
     resultOverlay.style.display = 'none';
 
     const idx = events.findIndex(e => e.id === targetEvent.id);
+    console.log('🎯 spinToEvent target:', targetEvent.id, 'idx:', idx);
     if (idx === -1) {
         spinning = false;
         return;
@@ -88,8 +102,16 @@ function spinToEvent(targetEvent) {
     const n = events.length;
     const angleStep = (2 * Math.PI) / n;
     const targetAngle = idx * angleStep + angleStep / 2;
-    const extraSpins = 5 + Math.random() * 3;
-    const finalAngle = (2 * Math.PI) - targetAngle + (2 * Math.PI) * extraSpins;
+    // Увеличиваем количество оборотов: минимум 8, максимум 12
+    const extraSpins = 8 + Math.floor(Math.random() * 5);
+    let finalAngle = (3 * Math.PI / 2) - targetAngle + 2 * Math.PI * extraSpins;
+    // Гарантируем, что разница будет минимум 6 полных оборотов для зрелищности
+    const minRotation = 6 * 2 * Math.PI;
+    while (finalAngle <= currentAngle + minRotation) {
+        finalAngle += 2 * Math.PI;
+    }
+    console.log('📐 currentAngle:', currentAngle, 'finalAngle:', finalAngle);
+
     const startAngle = currentAngle;
     const duration = 3000;
     const startTime = performance.now();
@@ -99,6 +121,7 @@ function spinToEvent(targetEvent) {
         const progress = Math.min(elapsed / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         currentAngle = startAngle + (finalAngle - startAngle) * eased;
+
         ctx.save();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.translate(250, 250);
@@ -111,6 +134,15 @@ function spinToEvent(targetEvent) {
             requestAnimationFrame(animate);
         } else {
             spinning = false;
+            const topIdx = getSectorAtTop();
+            console.log('✅ Сектор наверху (по расчёту):', topIdx, events[topIdx]?.name);
+            console.log('✅ Целевой сектор (из ответа):', idx, events[idx]?.name);
+            if (topIdx !== idx) {
+                console.error('❌ НЕСООТВЕТСТВИЕ!');
+            } else {
+                console.log('✅ Всё совпадает!');
+            }
+
             resultName.textContent = targetEvent.name;
             resultDesc.textContent = targetEvent.description;
             if (targetEvent.image) {
@@ -125,23 +157,17 @@ function spinToEvent(targetEvent) {
     requestAnimationFrame(animate);
 }
 
-// WebSocket
 function connectWebSocket() {
     const ws = new WebSocket('ws://localhost:8080/ws');
     ws.onopen = () => console.log('WebSocket connected');
     ws.onmessage = (msg) => {
         const data = JSON.parse(msg.data);
         if (data.action === 'spin') {
-            // Проверяем, совпадает ли рулетка с текущей
             if (data.roulette === currentRoulette) {
                 spinToEvent(data.event);
             } else {
-                // Можно автоматически переключиться на эту рулетку
-                // либо проигнорировать. Лучше переключиться, чтобы зритель видел нужную рулетку.
-                console.log(`Switching to roulette ${data.roulette} due to incoming spin`);
-                // Загружаем события этой рулетки и крутим
+                console.log(`Переключаемся на рулетку ${data.roulette} из-за входящего спина`);
                 loadRouletteEvents(data.roulette).then(() => {
-                    // после загрузки событий запускаем вращение
                     spinToEvent(data.event);
                 });
             }
@@ -150,12 +176,10 @@ function connectWebSocket() {
     ws.onclose = () => setTimeout(connectWebSocket, 1000);
 }
 
-// Обработчик выбора рулетки
 rouletteSelect.addEventListener('change', (e) => {
     const name = e.target.value;
     loadRouletteEvents(name);
 });
 
-// Инициализация
 loadRoulettes();
 connectWebSocket();
