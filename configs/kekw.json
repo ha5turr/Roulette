@@ -4,7 +4,7 @@
     "name": "Ты лох",
     "description": "Стример лох гага",
     "image": "https://media.tenor.com/fwWYoaFuSicAAAAi/loh-%D0%BB%D0%BE%D1%85.gif",
-    "color": "#000000",
+    "color": "#84600d",
     "weight": 5
   },
   {
@@ -12,7 +12,7 @@
     "name": "Ты красавчик",
     "description": "Стример красавчик",
     "image": "https://media.tenor.com/WEVqbc2RRHMAAAAi/and-then-thumbs-up.gif",
-    "color": "#ffffff",
+    "color": "#eec733",
     "weight": 5
   },
   {
@@ -20,15 +20,15 @@
     "name": "Я лох",
     "description": "ГАГА ДУМАЛ СМЕШНО? ТЕПЕРЬ ТЫ САМ ЛОХ",
     "image": "https://media.tenor.com/fwWYoaFuSicAAAAi/loh-%D0%BB%D0%BE%D1%85.gif",
-    "color": "#000000",
-    "weight": 7
+    "color": "#84600d",
+    "weight": 5
   },
   {
     "id": "yabeuty",
     "name": "Я красавчик",
     "description": "Оумагад чё за лев этот тигр",
     "image": "https://media.tenor.com/WEVqbc2RRHMAAAAi/and-then-thumbs-up.gif",
-    "color": "#ffffff",
-    "weight": 7
+    "color": "#eec733 ",
+    "weight": 5
   }
 ]
