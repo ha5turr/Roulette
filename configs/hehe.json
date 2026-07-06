@@ -110,5 +110,13 @@
     "image": "https://example.com/pet.png",
     "color": "#66cc11",
     "weight": 3
+  },
+  {
+   "id": "bless",
+    "name": "Bless U",
+    "description": "Сними одной проклятье!",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 0
   }
 ]
