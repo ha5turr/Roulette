@@ -4,7 +4,7 @@
     "name": "Фальшивая победа",
     "description": "Ты думал, что выиграл, но нет!",
     "image": "https://example.com/fake.png",
-    "color": "#ff00ff",
+    "color": "#000000",
     "weight": 5
   },
   {
@@ -12,7 +12,7 @@
     "name": "Танцевать",
     "description": "Встань и станцуй 30 секунд!",
     "image": "https://example.com/dance.png",
-    "color": "#ff8800",
+    "color": "#ff0000",
     "weight": 7
   },
   {
@@ -20,7 +20,7 @@
     "name": "Спеть песню",
     "description": "Спой куплет любой песни",
     "image": "https://example.com/sing.png",
-    "color": "#00aaff",
+    "color": "#000000",
     "weight": 6
   },
   {
@@ -28,7 +28,7 @@
     "name": "Погладить кота",
     "description": "Погладь своего питомца (если есть)",
     "image": "https://example.com/pet.png",
-    "color": "#66cc66",
+    "color": "#ff0000",
     "weight": 8
   },
   {
@@ -36,7 +36,7 @@
     "name": "Попить воды",
     "description": "Попить самой вкусной воды из под крана",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#000000",
     "weight": 9
   }
 ]
