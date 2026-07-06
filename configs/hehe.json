@@ -1,42 +1,114 @@
 [
   {
-    "id": "fake_win",
-    "name": "Фальшивая победа",
-    "description": "Ты думал, что выиграл, но нет!",
+    "id": "holepockets",
+    "name": "Дырявые карманы",
+    "description": "Потеря предметов из 3 и 4 слотов",
     "image": "https://example.com/fake.png",
     "color": "#ff00ff",
-    "weight": 5
-  },
-  {
-    "id": "dance",
-    "name": "Танцевать",
-    "description": "Встань и станцуй 30 секунд!",
-    "image": "https://example.com/dance.png",
-    "color": "#ff8800",
-    "weight": 7
-  },
-  {
-    "id": "sing",
-    "name": "Спеть песню",
-    "description": "Спой куплет любой песни",
-    "image": "https://example.com/sing.png",
-    "color": "#00aaff",
-    "weight": 6
-  },
-  {
-    "id": "pet",
-    "name": "Погладить кота",
-    "description": "Погладь своего питомца (если есть)",
-    "image": "https://example.com/pet.png",
-    "color": "#66cc66",
     "weight": 8
   },
   {
-    "id": "water",
-    "name": "Попить воды",
-    "description": "Попить самой вкусной воды из под крана",
+    "id": "hotweapon",
+    "name": "Раскаленное оружие",
+    "description": "Выбросить текущее оружие! ГОРЯЧО ЖЕ",
+    "image": "https://example.com/dance.png",
+    "color": "#ff8800",
+    "weight": 8
+  },
+  {
+    "id": "ratcrouch",
+    "name": "Мышь кродеца",
+    "description": "Игрок перемещается на корточках(мин)",
+    "image": "https://example.com/sing.png",
+    "color": "#00aaff",
+    "weight": 8
+  },
+  {
+    "id": "ratscrouch",
+    "name": "Мышиная лихорадка",
+    "description": "Все игроки перемещаются на корточках(мин)",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc66",
+    "weight": 4
+  },
+  {
+    "id": "frenzy",
+    "name": "Режим безумия",
+    "description": "Игрок обязан полностью зачистить текущий модуль от пве",
     "image": "https://example.com/pet.png",
     "color": "#66cc11",
-    "weight": 9
+    "weight": 5
+  },
+  {
+   "id": "cute",
+    "name": "Дохуя вежливый",
+    "description": "Игрок в течении минуты невероятно вежливый",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+   "id": "soundreverse",
+    "name": "ГДЕ МЯУКАЮТ?!?",
+    "description": "Игрок переворачивает наушники (мин)",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+   "id": "euveumeu",
+    "name": "ЭУВЭУМЭУ",
+    "description": "Игрок разговаривает непонятными словами(мин)",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+   "id": "dergalNovichok",
+    "name": "Дергал новичок",
+    "description": "Игрок в течении минуты называет Дергала новичком",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 6
+  },
+  {
+   "id": "subscribe",
+    "name": "Подпишись на канал",
+    "description": "Игрок в течении минуты убеждает чат подписаться на канал",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+   "id": "weAreWin",
+    "name": "Мы приехали?",
+    "description": "Игрок в течении минуты узнает приехали ли они",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 1
+  },
+  {
+   "id": "lionTiger",
+    "name": "Вуай лев этот тигр",
+    "description": "Этого игрока хвалят остальные тиммейты",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 4
+  },
+  {
+   "id": "imgood",
+    "name": "Я молодец!",
+    "description": "Игрок в течении минуты настаивает что он молодец",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 5
+  },
+  {
+   "id": "sling",
+    "name": "ЯЙЦА ВСМЯТКУ",
+    "description": "Шифтуй минуту! Чертов гоблин-пращевик зарядил тебе в промежность!",
+    "image": "https://example.com/pet.png",
+    "color": "#66cc11",
+    "weight": 3
   }
 ]
