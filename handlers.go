@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"math/rand"
 	"net/http"
 	"time"
@@ -19,7 +20,6 @@ type SpinResponse struct {
 	Event Event `json:"event"`
 }
 
-// GET /api/roulettes – возвращает список имён рулеток
 func roulettesListHandler(roulettes map[string]*Roulette) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		names := make([]string, 0, len(roulettes))
@@ -31,10 +31,8 @@ func roulettesListHandler(roulettes map[string]*Roulette) http.HandlerFunc {
 	}
 }
 
-// GET /api/roulette/{name} – возвращает события конкретной рулетки
 func rouletteHandler(roulettes map[string]*Roulette) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// Извлекаем имя из URL
 		name := r.URL.Path[len("/api/roulette/"):]
 		roulette, ok := roulettes[name]
 		if !ok {
@@ -46,8 +44,7 @@ func rouletteHandler(roulettes map[string]*Roulette) http.HandlerFunc {
 	}
 }
 
-// POST /api/spin – запуск рулетки (без изменений)
-func spinHandler(roulettes map[string]*Roulette, hub *Hub) http.HandlerFunc {
+func spinHandler(roulettes map[string]*Roulette, hub *Hub, sbClient *StreamerBotClient) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -71,6 +68,7 @@ func spinHandler(roulettes map[string]*Roulette, hub *Hub) http.HandlerFunc {
 			return
 		}
 
+		// Выбор события с весами
 		totalWeight := 0
 		for _, e := range roulette.Events {
 			totalWeight += e.Weight
@@ -85,7 +83,20 @@ func spinHandler(roulettes map[string]*Roulette, hub *Hub) http.HandlerFunc {
 			}
 		}
 
+		// Отправляем событие в оверлей
 		hub.Broadcast(selected, req.Roulette, roulette.Events)
+
+		// --- ОТПРАВКА В ЧАТ через Streamer.bot ---
+		if sbClient != nil {
+			chatMessage := "🎲 Рулетка: " + selected.Name + " – " + selected.Description
+			go func(msg string) {
+				if err := sbClient.SendChatMessage(msg); err != nil {
+					log.Printf("Failed to send chat message: %v", err)
+				} else {
+					log.Printf("Chat message sent: %s", msg)
+				}
+			}(chatMessage)
+		}
 
 		resp := SpinResponse{Event: selected}
 		w.Header().Set("Content-Type", "application/json")
