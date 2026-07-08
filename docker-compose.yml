@@ -14,4 +14,5 @@ services:
       # (Опционально) можно смонтировать логи, если добавишь запись логов в файл
       # - ./logs:/app/logs
     environment:
+      - STREAMERBOT_WS_URL=ws://192.168.1.111:8081
       - TZ=Europe/Moscow   # задай свой часовой пояс

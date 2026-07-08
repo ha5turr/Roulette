@@ -4,7 +4,7 @@
     "name": "Дырявые карманы",
     "description": "Потеря предметов из 3 и 4 слотов",
     "image": "https://example.com/fake.png",
-    "color": "#ff00ff",
+    "color": "#9cb848",
     "weight": 8
   },
   {
@@ -12,7 +12,7 @@
     "name": "Раскаленное оружие",
     "description": "Выбросить текущее оружие! ГОРЯЧО ЖЕ",
     "image": "https://example.com/dance.png",
-    "color": "#ff8800",
+    "color": "#67803e",
     "weight": 8
   },
   {
@@ -20,15 +20,15 @@
     "name": "Мышь кродеца",
     "description": "Игрок перемещается на корточках(мин)",
     "image": "https://example.com/sing.png",
-    "color": "#00aaff",
+    "color": "#9cb848",
     "weight": 8
   },
   {
     "id": "ratscrouch",
     "name": "Мышиная лихорадка",
-    "description": "Все игроки перемещаются на корточках(мин)",
+    "description": "ВСЕ игроки перемещаются на корточках(мин)",
     "image": "https://example.com/pet.png",
-    "color": "#66cc66",
+    "color": "#67803e",
     "weight": 4
   },
   {
@@ -36,7 +36,7 @@
     "name": "Режим безумия",
     "description": "Игрок обязан полностью зачистить текущий модуль от пве",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#9cb848",
     "weight": 5
   },
   {
@@ -44,7 +44,7 @@
     "name": "Дохуя вежливый",
     "description": "Игрок в течении минуты невероятно вежливый",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#67803e",
     "weight": 5
   },
   {
@@ -52,7 +52,7 @@
     "name": "ГДЕ МЯУКАЮТ?!?",
     "description": "Игрок переворачивает наушники (мин)",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#9cb848",
     "weight": 5
   },
   {
@@ -60,7 +60,7 @@
     "name": "ЭУВЭУМЭУ",
     "description": "Игрок разговаривает непонятными словами(мин)",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#67803e",
     "weight": 5
   },
   {
@@ -68,7 +68,7 @@
     "name": "Дергал новичок",
     "description": "Игрок в течении минуты называет Дергала новичком",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#9cb848",
     "weight": 6
   },
   {
@@ -76,15 +76,15 @@
     "name": "Подпишись на канал",
     "description": "Игрок в течении минуты убеждает чат подписаться на канал",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
-    "weight": 5
+    "color": "#67803e",
+    "weight": 1
   },
   {
    "id": "weAreWin",
     "name": "Мы приехали?",
     "description": "Игрок в течении минуты узнает приехали ли они",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#9cb848",
     "weight": 1
   },
   {
@@ -92,7 +92,7 @@
     "name": "Вуай лев этот тигр",
     "description": "Этого игрока хвалят остальные тиммейты",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#67803e",
     "weight": 4
   },
   {
@@ -100,7 +100,7 @@
     "name": "Я молодец!",
     "description": "Игрок в течении минуты настаивает что он молодец",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#9cb848",
     "weight": 5
   },
   {
@@ -108,7 +108,7 @@
     "name": "ЯЙЦА ВСМЯТКУ",
     "description": "Шифтуй минуту! Чертов гоблин-пращевик зарядил тебе в промежность!",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#67803e",
     "weight": 3
   },
   {
@@ -116,7 +116,7 @@
     "name": "Bless U",
     "description": "Сними одной проклятье!",
     "image": "https://example.com/pet.png",
-    "color": "#66cc11",
+    "color": "#9cb848",
     "weight": 0
   }
 ]
